@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+       <style>.padd {padding-top: 80px;}</style>
+<title>Create New Part</title>
+</head>
+<body class="padd">
+	<div layout:fragment="content" class="container bg-light">
+    <div align="center">
+        <p><b>Dodaj novi dio u bazu</b></p>
+        <form action="#" th:action="@{/save}" th:object="${parts}"
+            method="post">
+ 
+            <table border="0" cellpadding="10" class="table-striped">
+                <tr>
+                    <td>Broj šifre:</td>
+                    <td><input type="text" th:field="*{sifra}" /></td>
+                </tr>
+                <tr>
+                    <td>Grupa:</td>
+                    <td><input type="text" th:field="*{grupa}" /></td>
+                </tr>
+                <tr>
+                    <td>Naziv:</td>
+                    <td><input type="text" th:field="*{naziv}" /></td>
+                </tr>
+                <tr>
+                    <td>Proizvođač:</td>
+                    <td><input type="text" th:field="*{marka}" /></td>
+                </tr>  
+                <tr>
+                    <td>Za auto:</td>
+                    <td><input type="text" th:field="*{automobil}" /></td>
+                </tr>
+                <tr>
+                    <td>Za model:</td>
+                    <td><input type="text" th:field="*{modelauta}" /></td>
+                </tr>
+                <tr>
+                    <td>Godina:</td>
+                    <td><input type="text" th:field="*{godina}" /></td>
+                </tr>
+                <tr>
+                    <td>Količina:</td>
+                    <td><input type="text" th:field="*{kolicina}" /></td>
+                </tr>
+                <tr>
+                    <td>Cijena:</td>
+                    <td><input type="text" th:field="*{cijena}" /></td>
+                </tr>                             
+                <tr>
+                    <td colspan="2"><button class="btn btn-success" type="submit">Sačuvaj u bazi autodijelova</button> </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+    </div>
+</body>
+</html>

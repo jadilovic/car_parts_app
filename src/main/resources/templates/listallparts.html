@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parts List</title>
+        <meta charset="utf-8">
+        <style>.padd {padding-top: 80px;}</style>
+</head>
+<body class="padd">
+<div layout:fragment="content" class="container bg-light">
+  <div class="container" align="center">
+    <p><b>Lista svih autodijelova i stanje</b></p>
+    <table border="1" cellpadding="2" class="table-striped">
+        <thead>
+            <tr>
+                <th>Grupa</th>
+                <th>Naziv</th>
+                <th>Marka</th>
+                <th>Automobil</th>
+                <th>Model Auta</th>
+                <th>Godina</th>
+                <th>Količina</th>
+                <th>Cijena</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product : ${listParts}">
+                <td th:text="${product.grupa}">Group</td>
+                <td th:text="${product.naziv}">Name</td>
+                <td th:text="${product.marka}">Brand</td>
+                <td th:text="${product.automobil}">Car</td>
+                <td th:text="${product.modelauta}">Model</td>
+                <td th:text="${product.godina}">Year</td>
+                <td th:text="${product.kolicina}">Quantity</td>
+                <td th:text="${product.cijena}">Price</td>
+                <td>
+                	<a class="btn btn-success btn-sm" th:href="@{'/buysell/' + ${product.sifra}}">Kupi / Prodaj</a>
+                    <a class="btn btn-warning btn-sm" th:href="@{'/edit/' + ${product.sifra}}">Izmjeni</a>
+                    <a class="btn btn-danger btn-sm" th:href="@{'/delete/' + ${product.sifra}}">Poništi</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>  
+</div>
+</body>
+</html>
+ 
