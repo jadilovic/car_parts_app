@@ -8,23 +8,23 @@
 </head>
 <body class="padd">
 <div layout:fragment="content" class="container bg-light">
-  <div class="container" align="center">
+  <div class="container table-responsive" align="center">
     <p><b>Lista svih autodijelova i stanje</b></p>
     <table border="1" cellpadding="2" class="table-striped">
         <thead>
             <tr>
-                <th>Grupa</th>
-                <th>Naziv</th>
-                <th>Marka</th>
-                <th>Automobil</th>
-                <th>Model Auta</th>
-                <th>Godina</th>
-                <th>Količina</th>
-                <th>Cijena</th>
+                <th scope="col">Grupa</th>
+                <th scope="col">Naziv</th>
+                <th scope="col">Marka</th>
+                <th scope="col">Automobil</th>
+                <th scope="col">Model Auta</th>
+                <th scope="col">Godina</th>
+                <th scope="col">Količina</th>
+                <th scope="col">Cijena</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="product : ${listParts}">
+            <tr scope="row" th:each="product : ${listParts}">
                 <td th:text="${product.grupa}">Group</td>
                 <td th:text="${product.naziv}">Name</td>
                 <td th:text="${product.marka}">Brand</td>
@@ -41,8 +41,9 @@
             </tr>
         </tbody>
     </table>
-  </div>  
+  </div>   
 </div>
+
 </body>
 </html>
  
