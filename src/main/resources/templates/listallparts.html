@@ -34,9 +34,13 @@
                 <td th:text="${product.kolicina}">Quantity</td>
                 <td th:text="${product.cijena}">Price</td>
                 <td>
-                	<a class="btn btn-success btn-sm" th:href="@{'/buysell/' + ${product.sifra}}">Kupi / Prodaj</a>
-                    <a class="btn btn-warning btn-sm" th:href="@{'/edit/' + ${product.sifra}}">Izmjeni</a>
-                    <a class="btn btn-danger btn-sm" th:href="@{'/delete/' + ${product.sifra}}">Poništi</a>
+                	<a class="btn btn-success btn" th:href="@{'/buysell/' + ${product.sifra}}">Kupi / Prodaj</a>
+                </td>
+                <td>
+                    <a class="btn btn-warning btn" th:href="@{'/edit/' + ${product.sifra}}">Izmjeni</a>
+                </td>
+                <td>
+                    <a class="btn btn-danger btn" th:href="@{'/delete/' + ${product.sifra}}">Poništi</a>
                 </td>
             </tr>
         </tbody>
