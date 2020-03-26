@@ -8,8 +8,10 @@
 </head>
 <body class="padd">
 <div layout:fragment="content" class="container bg-light">
+
   <div class="container table-responsive" align="center">
     <p><b th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></b></p>
+    
     <table border="1" cellpadding="2" class="table-striped">
         <thead>
             <tr>
