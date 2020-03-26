@@ -1,44 +1,23 @@
-package com.avlija.parts.entities;
+package com.avlija.parts.form;
 
-import java.io.Serializable;
+public class PartsInfoForm {
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-@Entity
-@Table(name = "parts")
-public class Parts implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Column
 	private String sifra;
-	@Column
 	private String grupa;
-	@Column
 	private String naziv;
-	@Column
 	private String marka;
-	@Column
 	private String automobil;
-	@Column
 	private String modelauta;
-	@Column
 	private int godina;
-	@Column
 	private int kolicina;
-	@Column
-	private float cijena;
-
-	public Parts() {
+	private String cijena;
+	private boolean edit;
+	
+	public PartsInfoForm() {
 	}
-
-	public Parts(String sifra, String grupa, String naziv, String marka, String automobil, String modelauta, int godina,
-			int kolicina, float cijena) {
-		super();
+	
+	public PartsInfoForm(String sifra, String grupa, String naziv, String marka, String automobil, String modelauta,
+			int godina, int kolicina, String cijena, boolean edit) {
 		this.sifra = sifra;
 		this.grupa = grupa;
 		this.naziv = naziv;
@@ -48,131 +27,130 @@ public class Parts implements Serializable {
 		this.godina = godina;
 		this.kolicina = kolicina;
 		this.cijena = cijena;
+		this.edit = edit;
+	}
+	
+	
+	/**
+	 * @return the edit
+	 */
+	public boolean isEdit() {
+		return edit;
 	}
 
-	@Id
+	/**
+	 * @param edit the edit to set
+	 */
+	public void setEdit(boolean edit) {
+		this.edit = edit;
+	}
+
+	/**
+	 * @return the sifra
+	 */
 	public String getSifra() {
 		return sifra;
 	}
-
 	/**
 	 * @param sifra the sifra to set
 	 */
 	public void setSifra(String sifra) {
 		this.sifra = sifra;
 	}
-
 	/**
 	 * @return the grupa
 	 */
 	public String getGrupa() {
 		return grupa;
 	}
-
 	/**
 	 * @param grupa the grupa to set
 	 */
 	public void setGrupa(String grupa) {
 		this.grupa = grupa;
 	}
-
 	/**
 	 * @return the naziv
 	 */
 	public String getNaziv() {
 		return naziv;
 	}
-
 	/**
 	 * @param naziv the naziv to set
 	 */
 	public void setNaziv(String naziv) {
 		this.naziv = naziv;
 	}
-
 	/**
 	 * @return the marka
 	 */
 	public String getMarka() {
 		return marka;
 	}
-
 	/**
 	 * @param marka the marka to set
 	 */
 	public void setMarka(String marka) {
 		this.marka = marka;
 	}
-
 	/**
 	 * @return the automobil
 	 */
 	public String getAutomobil() {
 		return automobil;
 	}
-
 	/**
 	 * @param automobil the automobil to set
 	 */
 	public void setAutomobil(String automobil) {
 		this.automobil = automobil;
 	}
-
 	/**
 	 * @return the modelauta
 	 */
 	public String getModelauta() {
 		return modelauta;
 	}
-
 	/**
 	 * @param modelauta the modelauta to set
 	 */
 	public void setModelauta(String modelauta) {
 		this.modelauta = modelauta;
 	}
-
 	/**
 	 * @return the godina
 	 */
 	public int getGodina() {
 		return godina;
 	}
-
 	/**
 	 * @param godina the godina to set
 	 */
 	public void setGodina(int godina) {
 		this.godina = godina;
 	}
-
 	/**
 	 * @return the kolicina
 	 */
 	public int getKolicina() {
 		return kolicina;
 	}
-
 	/**
 	 * @param kolicina the kolicina to set
 	 */
 	public void setKolicina(int kolicina) {
 		this.kolicina = kolicina;
 	}
-
 	/**
 	 * @return the cijena
 	 */
-	public float getCijena() {
+	public String getCijena() {
 		return cijena;
 	}
-
 	/**
 	 * @param cijena the cijena to set
 	 */
-	public void setCijena(float cijena) {
+	public void setCijena(String cijena) {
 		this.cijena = cijena;
 	}
-
-
 }

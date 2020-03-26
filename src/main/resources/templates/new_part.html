@@ -9,10 +9,15 @@
 <body class="padd">
 	<div layout:fragment="content" class="container bg-light">
     <div align="center">
-        <p><b>Dodaj novi dio u bazu</b></p>
-        <form action="#" th:action="@{/save}" th:object="${parts}"
+       <div th:if="${partsForm.edit}"><b>Izmjeni podatke o autodijelu</b></div>
+       <div th:unless="${partsForm.edit}"><b>Dodaj novi dio u bazu</b></div>
+        
+        <div th:if="${errorMessage != null}"
+     		style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+     
+        <form action="#" th:action="@{/save}" th:object="${partsForm}"
             method="post">
- 
+ 			<input type="hidden" th:field="*{edit}"/>
             <table border="0" cellpadding="10" class="table-striped">
                 <tr>
                     <td>Broj šifre:</td>
@@ -20,7 +25,14 @@
                 </tr>
                 <tr>
                     <td>Grupa:</td>
-                    <td><input type="text" th:field="*{grupa}" /></td>
+                    <td><select th:field="*{grupa}">
+    					<option th:value="'Amortizer'" th:text="Amortizer"></option>
+    					<option th:value="'Trap'" th:text="Trap"></option>
+    					<option th:value="'Kočnica'" th:text="Kočnice"></option>
+    					<option th:value="'Kaišni prenos'" th:text="Kais"></option>
+    					<option th:value="'Filter'" th:text="Filter"></option>
+    					<option th:value="'Ostalo'" th:text="Ostalo"></option>
+					</select></td>
                 </tr>
                 <tr>
                     <td>Naziv:</td>
@@ -32,19 +44,34 @@
                 </tr>  
                 <tr>
                     <td>Za auto:</td>
-                    <td><input type="text" th:field="*{automobil}" /></td>
+                    <td><select th:field="*{automobil}">
+    					<option th:value="'Volkswagen'" th:text="Volkswagen"></option>
+    					<option th:value="'Opel'" th:text="Opel"></option>
+    					<option th:value="'BMW'" th:text="BMWe"></option>
+    					<option th:value="'Chervolet'" th:text="Chervolet"></option>
+    					<option th:value="'Fiat'" th:text="Fiat"></option>
+    					<option th:value="'Peugeot'" th:text="Peugeot"></option>
+					</select></td>
                 </tr>
                 <tr>
                     <td>Za model:</td>
                     <td><input type="text" th:field="*{modelauta}" /></td>
                 </tr>
                 <tr>
-                    <td>Godina:</td>
-                    <td><input type="text" th:field="*{godina}" /></td>
+                   <td>Godina:</td>
+                    <td><select th:field="*{godina}" >
+    					<option th:each="i : ${#numbers.sequence(1985, 2020)}" th:value="${i}" th:text="${i}">
+    					</option>
+					</select>
+				  </td>
                 </tr>
                 <tr>
                     <td>Količina:</td>
-                    <td><input type="text" th:field="*{kolicina}" /></td>
+                      <td><select th:field="*{kolicina}" >
+    						<option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">
+    						</option>
+						</select>
+					</td>
                 </tr>
                 <tr>
                     <td>Cijena:</td>

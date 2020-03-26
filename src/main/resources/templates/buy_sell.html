@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+       <style>.padd {padding-top: 80px;}</style>
+<title>Edit Part</title>
+</head>
+<body class="padd">
+	<div layout:fragment="content" class="container bg-light">
+    <div align="center">
+        <p><b>Kupi ili prodaj odabrani auto dio</b></p>
+        
+        <div th:if="${errorMessage!=null}"
+           class="btn btn-danger btn-block" th:utext="${errorMessage}">..</div>
+ 
+            <table border="1" cellpadding="10" class="table-striped" th:object="${part}">       
+                <tr>
+                    <td>Grupa:</td>
+                    <td th:text="*{grupa}"></td>
+                    <td>||</td>
+                    <td>Naziv:</td>
+                    <td th:text="*{naziv}"></td>
+                </tr>
+                <tr>
+                    <td>Proizvođač:</td>
+                    <td th:text="*{marka}"></td>
+                    <td>||</td>
+                    <td>Za auto:</td>
+                    <td th:text="*{automobil}"></td>
+                </tr>
+                <tr>
+                    <td>Za model:</td>
+                    <td th:text="*{modelauta}"></td>
+                   <td>||</td>
+                    <td>Godina:</td>
+                    <td th:text="*{godina}"></td>
+                </tr>
+                <tr>
+                    <td>Količina:</td>
+                    <td th:text="*{kolicina}"></td>
+                    <td>||</td>
+                    <td>Cijena:</td>
+                    <td th:text="*{cijena}"></td>
+                </tr>                            
+                <tr>
+            </table>
+
+      <form th:action="@{/buy}" th:object="${transPartsForm}" method="POST">
+         <table border="1" cellpadding="5" class="table-striped">
+           <tr>
+              <td>Šifra autodijela:</td>
+              <td><input type="text" th:field="*{sifra}" readonly="readonly"/></td>
+           </tr>
+            <tr>
+              <td>Kupi količinu:</td>
+              <td><select th:field="*{amount}" >
+    				<option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">
+    				</option>
+				</select>
+			</td>
+           </tr>           
+           <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"><input class="btn btn-success btn-block" type="submit" value="Kupi"/></td>
+           </tr>  
+           <tr><td></td><td></td></tr>  
+         </table>     
+      </form>
+      <form th:action="@{/sell}" th:object="${transPartsForm}" method="POST">
+         <table border="1" cellpadding="5" class="table-striped">
+           <tr>
+              <td>Šifra autodijela:</td>
+              <td><input type="text" th:field="*{sifra}" readonly="readonly"/></td>
+           </tr>
+            <tr>
+              <td>Prodaj količinu:</td>
+              <td><select th:field="*{amount}" >
+    				<option th:each="i : ${#numbers.sequence(1, 10)}" th:value="${i}" th:text="${i}">
+    				</option>
+				</select>
+			</td>
+           </tr>           
+           <tr>
+              <td>&nbsp;</td>
+              <td colspan="2"><input class="btn btn-warning btn-block" type="submit" value="Prodaj"/></td>
+           </tr>       
+         </table>      
+      </form>
+    </div>
+    </div>
+</body>
+</html>

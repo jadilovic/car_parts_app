@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Parts List</title>
+        <meta charset="utf-8">
+        <style>.padd {padding-top: 80px;}</style>
+</head>
+<body class="padd">
+<div layout:fragment="content" class="container bg-light">
+  <div class="container table-responsive" align="center">
+    <p><b th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></b></p>
+    <table border="1" cellpadding="2" class="table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Broj narudžbe</th>
+                <th scope="col">Datum i vrijeme naruzdžbe</th>
+                <th scope="col">Šifra</th>
+                <th scope="col">Naziv</th>
+                <th scope="col">Marka</th>
+                <th scope="col">Grupa</th>
+                <th scope="col">Količina</th>
+                <th scope="col">Cijena</th>
+                <th scope="col">Ukupno</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" th:each="product : ${listOrders}">
+                <td th:text="${product.ordernum}">Broj narudžbe</td>
+                <td th:text="${product.orderdate}">Datum i vrijeme narudžbe</td>
+                <td th:text="${product.sifra}">Šifra</td>
+                <td th:text="${product.naziv}">Naziv</td>
+                <td th:text="${product.marka}">Marka</td>
+                <td th:text="${product.grupa}">Grupa</td>
+                <td th:text="${product.kolicina}">Količina</td>
+                <td th:text="${product.cijena}">Cijena</td>
+                <td th:text="${product.ukupno}">Ukupno</td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{'/orderinfo/' + ${product.ordernum}}">Pregled</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+  </div>   
+</div>
+
+</body>
+</html>
+ 

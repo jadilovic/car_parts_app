@@ -9,7 +9,7 @@
 <body class="padd">
 <div layout:fragment="content" class="container bg-light">
   <div class="container table-responsive" align="center">
-    <p><b>Lista svih autodijelova i stanje</b></p>
+    <p><b th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></b></p>
     <table border="1" cellpadding="2" class="table-striped">
         <thead>
             <tr>
@@ -34,13 +34,13 @@
                 <td th:text="${product.kolicina}">Quantity</td>
                 <td th:text="${product.cijena}">Price</td>
                 <td>
-                	<a class="btn btn-success btn" th:href="@{'/buysell/' + ${product.sifra}}">Kupi / Prodaj</a>
+                	<a class="btn btn-success" th:href="@{'/buysell/' + ${product.sifra}}">Kupi / Prodaj</a>
                 </td>
                 <td>
-                    <a class="btn btn-warning btn" th:href="@{'/edit/' + ${product.sifra}}">Izmjeni</a>
+                    <a class="btn btn-warning" th:href="@{'/edit/' + ${product.sifra}}">Izmjeni</a>
                 </td>
                 <td>
-                    <a class="btn btn-danger btn" th:href="@{'/delete/' + ${product.sifra}}">Poništi</a>
+                    <a class="btn btn-danger" th:href="@{'/delete/' + ${product.sifra}}">Poništi</a>
                 </td>
             </tr>
         </tbody>

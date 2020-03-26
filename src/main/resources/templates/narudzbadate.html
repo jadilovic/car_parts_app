@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+       <style>.padd {padding-top: 80px;}</style>
+    <title>Pretraga narudžbi po datumu</title>
+   <!--  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet"> -->
+   <!-- <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script> -->
+    <script type='text/javascript' src='//code.jquery.com/jquery-1.8.3.js'></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/css/bootstrap-datepicker3.min.css">
+    <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.5.0/js/bootstrap-datepicker.min.js"></script>
+<script type='text/javascript'>
+$(function(){
+$('.input-daterange').datepicker({
+    autoclose: true
+});
+});
+</script>
+
+</head>
+<body class="padd">
+<div layout:fragment="content" class="container bg-light">
+<div align="center">
+        
+<div style="text-align:center"  class="container">
+	<h4>Odaberi datum narudžbe</h4>
+  <div class="input-daterange input-group" id="datepicker">
+     <form class="form-inline my-1 my-lg-0 navbar-brand" th:action="@{/search}" th:object="${command}" method="post">
+         	<input type="text" class="input-sm form-control" th:field="*{datetimeField}" name="from" placeholder="Unesite datum"/>
+      	<button class="btn btn-primary my-2 my-sm-0" type="submit">Pretraga po datumu narudžbe</button>
+    </form>
+  </div>
+</div>
+
+<div th:if="${errorMessage != null}"
+     style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+     
+     <!-- ELSE -->
+<div th:if="${listOrders != null} AND ${listOrders.size() == 0}">
+   <div style="color:red;font-style:italic">Nema narudžbi odabranog datuma</div>
+</div>
+
+<!--Lista narudzbi po datumu-->
+<div th:if="${listOrders != null} AND ${listOrders.size() > 0}">
+  <div class="container table-responsive" align="center">
+    <p><b th:if="${message}" th:text="${message}" th:class="${'alert ' + alertClass}"></b></p>
+    <table border="1" cellpadding="2" class="table-striped">
+        <thead>
+            <tr>
+                <th scope="col">Broj narudžbe</th>
+                <th scope="col">Datum i vrijeme naruzdžbe</th>
+                <th scope="col">Šifra</th>
+                <th scope="col">Naziv</th>
+                <th scope="col">Marka</th>
+                <th scope="col">Grupa</th>
+                <th scope="col">Količina</th>
+                <th scope="col">Cijena</th>
+                <th scope="col">Ukupno</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr scope="row" th:each="product : ${listOrders}">
+                <td th:text="${product.ordernum}">Broj narudžbe</td>
+                <td th:text="${product.orderdate}">Datum i vrijeme narudžbe</td>
+                <td th:text="${product.sifra}">Šifra</td>
+                <td th:text="${product.naziv}">Naziv</td>
+                <td th:text="${product.marka}">Marka</td>
+                <td th:text="${product.grupa}">Grupa</td>
+                <td th:text="${product.kolicina}">Količina</td>
+                <td th:text="${product.cijena}">Cijena</td>
+                <td th:text="${product.ukupno}">Ukupno</td>
+                <td>
+                    <a class="btn btn-warning" th:href="@{'/orderinfo/' + ${product.ordernum}}">Pregled</a>
+                </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> 
+</div>
+
+    </div>
+   </div>
+</body>
+</html>

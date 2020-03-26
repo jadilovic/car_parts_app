@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.w3.org/1999/xhtml" layout:decorate="~{fragments/main_layout}"
+	  xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+       <style>.padd {padding-top: 80px;}</style>
+<title>Edit Part</title>
+</head>
+<body class="padd">
+	<div layout:fragment="content" class="container bg-light">
+    <div align="center">
+        <p><b>Informacija o narudžbi</b></p>
+        
+        <div th:if="${errorMessage!=null}"
+           style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+           
+        <form class="form-inline my-1 my-lg-0 navbar-brand" th:action="@{/showorder}" th:object="${command}" method="post">
+      		<input class="form-control mr-sm-2" th:field="*{orderNum}" type="search" placeholder="Search" aria-label="Search">
+      		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pretraga po broju narudžbe</button>
+    	</form>
+			<div th:if="order != null">
+			  <table border="0" cellpadding="10" class="table-striped" th:object="${order}">
+                <tr>             
+                    <td>Broj narudžbe:</td>
+                    <td th:text="*{ordernum}"></td>
+                </tr>        
+                <tr>
+                    <td>Datum i vrijeme narudzbe:</td>
+                    <td th:text="*{orderdate}"></td>
+                </tr>
+                <tr>
+                    <td>Šifra:</td>
+                    <td th:text="*{sifra}"></td>
+                </tr>
+                <tr>
+                    <td>Naziv:</td>
+                    <td th:text="*{naziv}"></td>
+                </tr>  
+                <tr>
+                    <td>Marka:</td>
+                    <td th:text="*{marka}"></td>
+                </tr>
+                <tr>
+                    <td>Grupa:</td>
+                    <td th:text="*{grupa}"></td>
+                </tr>
+                <tr>
+                    <td>Količina:</td>
+                    <td th:text="*{kolicina}"></td>
+                </tr>
+                <tr>
+                    <td>Cijena:</td>
+                    <td th:text="*{cijena}"></td>
+                </tr>
+                <tr>
+                    <td>Ukupno:</td>
+                    <td th:text="*{ukupno}"></td>
+                </tr>                            
+                <tr>
+            </table>
+		</div>
+    </div>
+    </div>
+</body>
+</html>

@@ -1,7 +1,8 @@
 package com.avlija.parts.service;
 
 import java.util.List;
- 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,18 +18,22 @@ public class PartsService {
     private PartsRepository repo;
      
     public List<Parts> listAll() {
-        return repo.findAll();
+        return (List<Parts>) repo.findAll();
     }
      
     public void save(Parts part) {
         repo.save(part);
     }
      
-    public Parts get(String sifra) {
-        return repo.findById(sifra).get();
-    }
-     
     public void delete(String barcode) {
         repo.deleteById(barcode);
+    }
+    
+    public List<Parts> search(String keyword) {
+    	return repo.search(keyword);
+    }
+    
+    public List<Parts> get(String sifra) {
+    	return repo.search(sifra);
     }
 }

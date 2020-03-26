@@ -1,44 +1,30 @@
-package com.avlija.parts.entities;
+package com.avlija.parts.model;
 
-import java.io.Serializable;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+public class PartsInfo {
 
-@Entity
-@Table(name = "parts")
-public class Parts implements Serializable {
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@Column
 	private String sifra;
-	@Column
 	private String grupa;
-	@Column
+	
 	private String naziv;
-	@Column
+	
 	private String marka;
-	@Column
+	
 	private String automobil;
-	@Column
+	
 	private String modelauta;
-	@Column
+	
 	private int godina;
-	@Column
+	
 	private int kolicina;
-	@Column
+	
 	private float cijena;
 
-	public Parts() {
+	public PartsInfo() {
 	}
 
-	public Parts(String sifra, String grupa, String naziv, String marka, String automobil, String modelauta, int godina,
-			int kolicina, float cijena) {
-		super();
+	public PartsInfo(String sifra, String grupa, String naziv, String marka, String automobil, String modelauta, int godina,
+						int kolicina, float cijena) {
 		this.sifra = sifra;
 		this.grupa = grupa;
 		this.naziv = naziv;
@@ -50,7 +36,6 @@ public class Parts implements Serializable {
 		this.cijena = cijena;
 	}
 
-	@Id
 	public String getSifra() {
 		return sifra;
 	}

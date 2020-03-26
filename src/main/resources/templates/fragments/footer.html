@@ -1,21 +1,22 @@
+<meta charset="utf-8">
 <div th:fragment="footer" class="footer" xmlns:th="http://www.w3.org/1999/xhtml">
   <div class="container">
 <div class="row">
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body bg-light">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Evidencija narudžbi autodijelava</h5>
+        <p class="card-text">Svaka narudžba ima svoj unikatan broj po kojem se može pronaći.</p>
+        <a href="#" th:href="@{/showorder}" class="btn btn-success">Traži po broju narudžbe</a>
       </div>
     </div>
   </div>
   <div class="col-sm-6">
     <div class="card">
       <div class="card-body bg-light">
-        <h5 class="card-title">Special title treatment</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <h5 class="card-title">Datum narudžbe autodijela je evidentiran</h5>
+        <p class="card-text">Svaka narudžba ima podatak o datumu i vremenu narudžbe.</p>
+        <a href="#" th:href="@{/search}" class="btn btn-warning">Traži po datumu narudžbe</a>
       </div>
     </div>
   </div>
