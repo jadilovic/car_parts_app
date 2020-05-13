@@ -1,8 +1,5 @@
 package com.avlija.parts.form;
 
-import java.sql.Date;
-import java.time.LocalDateTime;
-
 public class FormCommand {
     private String orderNum;
  
